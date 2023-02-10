@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<project name="Lyra Game Engine" basedir="." default="build">
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<!-- Configuration Properties -->
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<property name="debug"              value="off"/>
+	<property name="verbose"            value="off"/>
+	<property name="build.dir"          value="src/java/lyra"/>
+	<property name="src.dir"            value="src/java/lyra"/>
+	<property name="jar.dir"            value="system"/>
+	<property name="jar.name"           value="lyra.jar"/>
+	<property name="key.dir"            value="../assets/keys"/>
+	<property name="signed.jar.name"    value="lyraSigned.jar"/>
+	<property name="bin.path"		    value="../../../applications/jdk1.6.0/bin"/>
+
+	<!--~~~~~~~~~~~~~~~~-->
+	<!-- Default Target -->
+	<!--~~~~~~~~~~~~~~~~-->
+	<target name="build"
+			description="Build project."
+			depends="clean, compile, jar, sign">
+		<echo message="${ant.project.name} built!"/>
+	</target> 
+
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<!-- Cleanup Compiled Class Files -->
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<target name="clean" description="Clean up class files.">
+		<delete verbose="false">
+			<fileset dir="${build.dir}" includes="**/*.class"/>
+			<fileset dir="${build.dir}/lyra" includes="**/*.ser"/>
+			<fileset dir="${jar.dir}" includes="*.jar"/>
+			<fileset dir="${jar.dir}" includes="LyraTheGameKeys.public"/>
+			<fileset dir="${jar.dir}" includes="LyraTheGameCert.cer"/>
+		</delete>
+	</target>
+
+ 	<!--~~~~~~~~~~~~~~~~~~~~~-->
+	<!-- Compile Source Code -->
+	<!--~~~~~~~~~~~~~~~~~~~~~-->
+	<target name="compile" description="Compile source code.">
+		<javac srcdir="${src.dir}"
+				destdir="${build.dir}"
+				includes="**/*.java"
+				verbose="${verbose}"
+				debug="${debug}"/>
+		<copy verbose="false" todir="${build.dir}/lyra">
+			<fileset dir="${src.dir}">
+				<include name="**/*.ser"/>
+			</fileset>
+		</copy>
+		<echo message="Source compiled!"/>
+	</target> 
+
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<!-- Build Lyra Game Engine JAR -->
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<target name="jar" description="Build Lyra .jar." depends="compile">
+		<jar jarfile="${jar.dir}/${jar.name}">
+			<fileset dir="${src.dir}" includes="**/*.class"/>
+			<fileset dir="${src.dir}" includes="lyra/**/*.ser"/>
+		</jar>
+		<echo message="Lyra .jar built!"/>
+	</target>
+
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<!-- Sign Lyra Game Engine JAR -->
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<target name="sign" description="Sign Lyra .jar." depends="jar">
+		<exec dir="${jar.dir}" executable="jarsigner">
+			<arg line="-keystore ${key.dir}/lyraKeys.private -storepass lyragame -keypass lyragame -signedjar ${signed.jar.name} ${jar.name} lyra"/>
+		</exec>
+		<exec dir="${jar.dir}" executable="keytool">
+			<arg line="-export -keystore ${key.dir}/lyraKeys.private -storepass lyragame -alias lyra -file LyraTheGameCert.cer"/>
+		</exec>
+		<exec dir="${jar.dir}" executable="keytool">
+			<arg line="-import -noprompt -alias game -file LyraTheGameCert.cer -keystore LyraTheGameKeys.public -keypass lyragame -storepass lyragame"/>
+		</exec>
+		<echo message="Lyra .jar signed!"/>
+	</target>
+</project>
+

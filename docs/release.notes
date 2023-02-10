@@ -1,0 +1,235 @@
+The release notes for the Lyra Game Engine Project.
+
+Copyright (C) 2007 - 2008 by Joshua S. English. This document is the
+intellectual property of Joshua S. English. All rights reserved.
+
+Date         Version     Author       Description
+----------   --------    ---------    -----------------------------------------
+[03/15/07]   0.0.01     jenglish(A)   Project creation.
+
+[03/15/07]   0.0.002     jenglish(A)   Initial CVS checkin.
+
+[03/16/07]   0.0.03     jenglish(A)   Various minor engine enhancements.
+
+[03/16/07]   0.0.04     jenglish(A)   Altered the frame rate calculation default.
+
+[03/16/07]   0.0.05     jenglish(A)   Enhanced the game engine with addition internal rendering systems as well as smart frame rate limiting.
+
+[03/16/07]   0.0.06     jenglish(A)   Updated the graphics interface to be more readable.
+
+[03/16/07]   0.0.07     jenglish(A)   Added test texture assets of Milla Jovovich (png & jpg).
+
+[03/16/07]   0.0.08     jenglish(A)   Created the game engine texturing system, with hardware acceration and automated mip-mapping.
+
+[03/16/07]   0.0.09     jenglish(A)   Created the game engine texturing system test application.
+
+[03/16/07]   0.0.10     jenglish(A)   Created a html launcher for the texture test.
+
+[03/17/07]   0.0.11     jenglish(A)   Enhanced the asset cache to handle texture objects.
+
+[03/17/07]   0.0.12     jenglish(A)   Enhanced the asset cache to immediately obtain the image from the i/o system.
+
+[03/17/07]   0.0.13     jenglish(A)   Enhanced the texture system to be able to be loaded from the asset cache.
+
+[03/17/07]   0.0.14     jenglish(A)   Enhanced the texture test to accomodate the new texture API.
+
+[03/17/07]   0.0.15     jenglish(A)   Created the sprite test images.
+
+[03/17/07]   0.0.16     jenglish(A)   Created the sprite system, with 16-degrees of motion.
+
+[03/17/07]   0.0.17     jenglish(A)   Created the sprite test system.
+
+[03/17/07]   0.0.18     jenglish(A)   Created the sprite test launcher.
+
+[03/19/07]   0.0.19     jenglish(A)   Enhanced the GameEngine to make better use of the Java Applet API.
+
+[03/19/07]   0.0.20     jenglish(A)   Altered certain GameEngine function calls to report stack traces on exceptions.
+
+[03/19/07]   0.0.21     jenglish(A)   Enhanced the texture system to complete the initialization of mip-map textures to prevent pipeline frame-rate hits.
+
+[03/19/07]   0.0.22     jenglish(A)   Enhanced the sprite test with class name tracking.
+
+[03/19/07]   0.0.23     jenglish(A)   Enhanced the texture test to build addition mip-maps of the image set.
+
+[03/19/07]   0.0.24     jenglish(A)   Enhanced the sprite system to consider the current frame rate for rotation calculations.
+
+[03/19/07]   0.0.25     jenglish(A)   Updated the sprite test to conform to the new sprite API.
+
+[03/19/07]   0.0.26     jenglish(A)   Created the sprite physics system, with consideration for acceration, lateral motion, variable friction, turbo or boosted-acceration mode, and consideration of frame-rate.
+
+[03/19/07]   0.0.27     jenglish(A)   Created the sprite physics system test application.
+
+[03/19/07]   0.0.28     jenglish(A)   Checked-in the current binary build.
+
+[03/20/07]   0.0.29     jenglish(A)   Created the new frame-based animation sequence management system.
+
+[03/20/07]   0.0.30     jenglish(A)   Implemented a test of the new animation system.
+
+[03/20/07]   0.0.31     jenglish(A)   Added an html launcher for the new animation system.
+
+[03/20/07]   0.0.32     jenglish(A)   Corrected comments in test applications.
+
+[03/20/07]   0.0.33     jenglish(A)   Checked-in the latest build.
+
+[03/20/07]   0.0.34     jenglish(A)   Enhanced the asset cache to close thei nput streams.
+
+[03/20/07]   0.0.35     jenglish(A)   Created the ulity package space and instantiated a config file management system.
+
+[03/20/07]   0.0.36     jenglish(A)   Created the GUI widget package space and instantiated the Widget interface.
+
+[03/20/07]   0.0.37     jenglish(A)   Checked-in the current build.
+
+[03/20/07]   0.0.38     jenglish(A)   Created the camera system, with a movement-capture API.
+
+[03/20/07]   0.0.39     jenglish(A)   Implemented the camera system within the Sprite system.
+
+[03/20/07]   0.0.40     jenglish(A)   Created a camera test application by extending the sprite physics test application.
+
+[03/20/07]   0.0.41     jenglish(A)   Created the camera test launcher.
+
+[03/20/07]   0.0.42     jenglish(A)   Added a background image for camera testing.
+
+[03/21/07]   0.0.43     jenglish(A)   Added logic to the animation system to check to see if the animation is already playing before initiating a start-of-sequence.
+
+[03/21/07]   0.0.44     jenglish(A)   Enhanced the camera system to track boolean movement state.
+
+[03/21/07]   0.0.45     jenglish(A)   Added accessor functions to the sprite system for its current offsets.
+
+[03/21/07]   0.0.46     jenglish(A)   Added accessor functions to the sprite physics system for access to its coefficient of friction.
+
+[03/21/07]   0.0.47     jenglish(A)   Created the tile system.
+
+[03/21/07]   0.0.48     jenglish(A)   Created the scene system, with built-in usage of the camera system and collision-detection.
+
+[03/21/07]   0.0.49     jenglish(A)   Created a scene test application with 3 different tile sets with varying friction values for each set, added collision dectection for set #3, added animation sequence that triggers on collision with tile-set #3.
+
+[03/21/07]   0.0.50     jenglish(A)   Created the scene test launcher.
+
+[03/21/07]   0.0.51     jenglish(A)   Created the scene test tiles.
+
+[03/21/07]   0.0.52     jenglish(A)   Enhanced the sprite physics system to process both forward as well as reverse thrust.
+
+[03/21/07]   0.0.53     jenglish(A)   Enhanced the sprite physics system to calculate the angular velocity in order to determine if the sprite is experiencing a slide-out condition.
+
+[03/23/07]   0.0.54     jenglish(A)   Changed the color of the scene debugging sampling location from red to blue.
+
+[03/23/07]   0.0.55     jenglish(A)   Changed the scene test application to consider sprite rate-of-motion for turn-rate calculation.
+
+[03/23/07]   0.0.56     jenglish(A)   Enhanced the sprite system to be able to report current turn rate as a time value.
+
+[03/23/07]   0.0.57     jenglish(A)   Enhanced the sprite physics system to cancel a slide condition if the rate drops to zero.
+
+[03/23/07]   0.0.58     jenglish(A)   Enhanced the sprite physics system to perform rate-of-turn normalization based upon the sprite's current rate against it's average rate of motion.
+
+[03/26/07]   0.0.59     jenglish(A)   Enhanced the scene test to use the 3D sandrail images.
+
+[03/26/07]   0.0.60     jenglish(A)   Enhanced certain test applications with checks for game loaded status.
+
+[03/26/07]   0.0.61     jenglish(A)   Created the GUI widget system font information system.
+
+[03/26/07]   0.0.62     jenglish(A)   Created the GUI widget progress bar.
+
+[03/26/07]   0.0.63     jenglish(A)   Created the GUI widget progress bar test application.
+
+[03/26/07]   0.0.64     jenglish(A)   Checked-in the progress bar GUI widget images.
+
+[03/27/07]   0.0.65     jenglish(A)   Enhanced the asset cache system to load configuration files.
+
+[03/27/07]   0.0.66     jenglish(A)   Enhanced the asset cache system to be able to load images into a raw format for later finalization for use within the game engine.
+
+[03/27/07]   0.0.67     jenglish(A)   Enhanced the GUI widget progress bar test application to make use of the animation loader and load the explosion animation from a config file.
+
+[03/27/07]   0.0.68     jenglish(A)   Created the utility Loader interface for defining loading systems.
+
+[03/27/07]   0.0.69     jenglish(A)   Created the animation loading system.
+
+[03/29/07]   0.0.70     jenglish(A)   Created the plugin system.
+
+[03/29/07]   0.0.71     jenglish(A)   Added the MP3 codec to the plugin system.
+
+[03/29/07]   0.0.72     jenglish(A)   Created the MP3 DataLine interface.
+
+[03/29/07]   0.0.73     jenglish(A)   Created the audio system.
+
+[03/29/07]   0.0.74     jenglish(A)   Created the audio streaming system.
+
+[03/29/07]   0.0.75     jenglish(A)   Created the audio player.
+
+[03/29/07]   0.0.76     jenglish(A)   Created the cached input stream utility.
+
+[03/29/07]   0.0.77     jenglish(A)   Enhanced the config utility to get long data types from a config file.
+
+[03/29/07]   0.0.78     jenglish(A)   Enhanced the build system to include the MP3 codec.
+
+[03/29/07]   0.0.79     jenglish(A)   Added the test audio tracks.
+
+[03/29/07]   0.0.80     jenglish(A)   Added the test audio track config files.
+
+[03/29/07]   0.0.81     jenglish(A)   Created the audio player test application.
+
+[03/29/07]   0.0.82     jenglish(A)   Created the audio player test launcher.
+
+[03/29/07]   0.0.83     jenglish(A)   Added an audio effect to the collision-detection trigger in the scene test.
+
+[03/30/07]   0.0.84     jenglish(A)   Added a sprite cannon and a ball sprite to the scen test application.
+
+[04/02/07]   0.0.85     jenglish(A)   Enhanced the asset cache system to consider proper pathing.
+
+[04/02/07]   0.0.86     jenglish(A)   Enhanced the asset cache system to be able to load & cache audio player objects.
+
+[04/02/07]   0.0.87     jenglish(A)   Enhanced the audio player test to rely on the asset cache for audio player loading.
+
+[04/02/07]   0.0.88     jenglish(A)   Broke the functionality for box-with-corners loading/rendering into a widget object for reuse.
+
+[04/02/07]   0.0.89     jenglish(A)   Ported the progress bar widget over to use the cornered-box widget.
+
+[04/02/07]   0.0.90     jenglish(A)   Ported existing unit tests and loaders to use the new progress bar & box-with-corners API.
+
+[04/02/07]   0.0.91     jenglish(A)   Created the button widget.
+
+[04/06/07]   0.0.92     jenglish(A)   Enhanced the texture system mip-map error reporting.
+
+[04/06/07]   0.0.93     jenglish(A)   Corrected the button system to use the new button rendering system rather than a cornered box.
+
+[04/06/07]   0.0.94     jenglish(A)   Correcte cornered box widget description.
+
+[04/06/07]   0.0.95     jenglish(A)   Enhanced the font info API with addition getters.
+
+[04/06/07]   0.0.96     jenglish(A)   Added a 'normal' state button widget asset image set.
+
+[04/06/07]   0.0.97     jenglish(A)   Created the widget test application.
+
+[04/06/07]   0.0.98     jenglish(A)   Created the button rendering system.
+
+[04/06/07]   0.0.99     jenglish(A)   Created the textbox GUI widget.
+
+[04/07/07]   0.1.00     jenglish(A)   Created the scroll bar widget.
+
+[04/07/07]   0.1.01     jenglish(A)   Enhanced the widget system with a deFocus() method.
+
+[04/12/07]   0.1.02     jenglish(A)   Enhanced the button rendering system by adding an automated 9-part image resize & compositing algorithm to the texture system.
+
+[04/17/07]   0.1.03     jenglish(A)   Created the file browser GUI widget system.
+
+[04/17/07]   0.1.04     jenglish(A)   Created the tree GUI widget system.
+
+[04/17/07]   0.1.05     jenglish(A)   Created the tree node GUI widget utility.
+
+[04/17/07]   0.1.06     jenglish(A)   Added the file browser GUI widget to the widget test application.
+
+[05/24/07]   0.1.07     jenglish(A)   Enhanced the lyra animation system to enable the coordinate offsets to be set externally.
+
+[05/24/07]   0.1.08     jenglish(A)   Added movement-based simple animation trigger sequence to the lyra scene test application.
+
+[05/24/07]   0.1.09     jenglish(A)   Enhanced the sprite physics system to normalize the application of coefficient of friction.
+
+[05/24/07]   0.1.10     jenglish(A)   Created the lyra trigger system.
+
+[05/24/07]   0.1.11     jenglish(A)   Defined interfaces for the trigger, a trigger action, and a trigger event.
+
+[02/27/08]   0.1.12     jenglish(A)   Created the initial implementation of the "Galaxik" game.
+
+[03/04/08]   0.1.13     jenglish(A)   Galaxik update.
+
+[03/06/08]   0.1.14     jenglish(A)   Galaxik update.
+

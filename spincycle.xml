@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<project name="Spincycle Game" basedir="." default="build">
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<!-- Configuration Properties -->
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<property name="debug"				value="off"/>
+	<property name="verbose"			value="off"/>
+	<property name="build.dir"			value="src/java/spincycle"/>
+	<property name="src.dir"			value="src/java/spincycle"/>
+	<property name="lyra.dir"			value="src/java/lyra"/>
+	<property name="jar.dir"			value="system"/>
+	<property name="jar.name"			value="spincycle.jar"/>
+	<property name="key.dir"			value="../assets/keys"/>
+	<property name="signed.jar.name"	value="spincycleSigned.jar"/>
+	<property name="bin.dir"			value="../../../applications/jdk1.6.0/bin"/>
+
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<!-- Compilation Class Path -->
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<path id="local.class.path">
+		<pathelement location="system/lyra.jar"/>
+	</path>
+
+	<!--~~~~~~~~~~~~~~~~~~~~~-->
+	<!-- Release-Mode Assets -->
+	<!--~~~~~~~~~~~~~~~~~~~~~-->
+	<property name="release.name"			value="Spincycle.jar"/>
+	<property name="signed.release.name"	value="SpincycleSigned.jar"/>
+	<property name="release.dir"			value="release"/>
+	<property name="asset.dir"				value="assets"/>
+
+	<!--~~~~~~~~~~~~~~~~-->
+	<!-- Default Target -->
+	<!--~~~~~~~~~~~~~~~~-->
+	<target name="build"
+			description="Build project."
+			depends="clean, compile, jar, sign">
+		<echo message="${ant.project.name} built!"/>
+	</target> 
+
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<!-- Cleanup Compiled Class Files -->
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<target name="clean" description="Clean up class files.">
+		<delete verbose="false">
+			<fileset dir="${build.dir}" includes="**/*.class"/>
+			<fileset dir="${build.dir}/spincycle" includes="**/*.ser"/>
+			<fileset dir="${jar.dir}" includes="spincycle.jar"/>
+			<fileset dir="${jar.dir}" includes="spincycleSigned.jar"/>
+			<fileset dir="${jar.dir}" includes="LyraTheGameKeys.public"/>
+			<fileset dir="${jar.dir}" includes="LyraTheGameCert.cer"/>
+		</delete>
+	</target>
+
+ 	<!--~~~~~~~~~~~~~~~~~~~~~-->
+	<!-- Compile Source Code -->
+	<!--~~~~~~~~~~~~~~~~~~~~~-->
+	<target name="compile" description="Compile source code.">
+		<javac classpathref="local.class.path"
+				srcdir="${src.dir}"
+				destdir="${build.dir}"
+				includes="**/*.java"
+				verbose="${verbose}"
+				debug="${debug}"/>
+		<copy verbose="false" todir="${build.dir}/lyra">
+			<fileset dir="${src.dir}">
+				<include name="**/*.ser"/>
+			</fileset>
+		</copy>
+		<echo message="Source compiled!"/>
+	</target> 
+
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<!-- Build Spincycle Game JAR -->
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<target name="jar" description="Build Spincycle .jar." depends="compile">
+		<jar jarfile="${jar.dir}/${jar.name}">
+			<fileset dir="${lyra.dir}" includes="lyra/**/*.ser"/>
+			<fileset dir="${lyra.dir}" includes="**/*.class"/>
+			<fileset dir="${src.dir}" includes="**/*.class"/>
+		</jar>
+		<echo message="Spincycle .jar built!"/>
+	</target>
+
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<!-- Sign Spincycle Game JAR -->
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~-->
+	<target name="sign" description="Sign Spincycle .jar." depends="jar">
+		<exec dir="${jar.dir}" executable="jarsigner">
+			<arg line="-keystore ${key.dir}/lyraKeys.private -storepass lyragame -keypass lyragame -signedjar ${signed.jar.name} ${jar.name} lyra"/>
+		</exec>
+		<exec dir="${jar.dir}" executable="keytool">
+			<arg line="-export -keystore ${key.dir}/lyraKeys.private -storepass lyragame -alias lyra -file LyraTheGameCert.cer"/>
+		</exec>
+		<exec dir="${jar.dir}" executable="keytool">
+			<arg line="-import -noprompt -alias game -file LyraTheGameCert.cer -keystore LyraTheGameKeys.public -keypass lyragame -storepass lyragame"/>
+		</exec>
+		<echo message="Spincycle .jar signed!"/>
+	</target>
+</project>
+

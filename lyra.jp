@@ -1,0 +1,9 @@
+/* The Lyra Game java security policy, set the keystore path to the correct
+   directory for your system (as needed). */
+
+keystore "C:\files\projects\lyra\system\LyraTheGameKeys.public";
+
+grant {
+	permission java.security.AllPermission;
+};
+
