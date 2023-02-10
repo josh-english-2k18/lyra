@@ -1,4 +1,6 @@
 # lyra
+[<img src="https://github.com/josh-english-2k18/lyra/blob/main/logo.png">](logo)
+
 lyra - a 2D game engine in Java
 
 ## Overview
